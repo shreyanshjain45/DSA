@@ -3,13 +3,13 @@ public:
     int maxArea(vector<int>& height) {
         int left = 0;
         int right = height.size()-1;
-
-        int ans = 0;
+        int maxwater = 0;
         while(left<right){
-            int width = right-left;
-            int length = min(height[left],height[right]);
+            int width = right -left;
+            int h = min(height[left] , height[right]);
 
-            ans = max(ans,width*length);
+            int area = width * h;
+            maxwater = max(area,maxwater);
 
             if(height[left]<height[right]){
                 left++;
@@ -18,6 +18,6 @@ public:
                 right--;
             }
         }
-    return ans;
+        return maxwater;
     }
 };
